@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>關於我們 — Wireframe（低保真）</title>
+<style>
+  :root{
+    --line:#b9b9b9; --line2:#d8d8d8; --ph:#ececec; --ph2:#f4f4f4;
+    --ink:#333; --muted:#888; --accent:#4a4a4a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:#fafafa;line-height:1.7}
+  .wf-flag{position:fixed;top:8px;right:8px;z-index:50;background:#fff3cd;border:1px solid #e0c97a;color:#7a5d00;font-size:12px;padding:4px 8px;border-radius:4px;max-width:300px}
+  .site-header{display:flex;align-items:center;gap:16px;padding:10px 16px;background:var(--ph);border-bottom:1px dashed var(--line);font-size:13px;color:var(--muted)}
+  .site-header .logo{font-weight:700;color:var(--accent);border:1px solid var(--line);padding:2px 8px;border-radius:3px}
+  .site-header .nav{display:flex;gap:14px;flex:1}
+  .page{max-width:920px;margin:0 auto;padding:20px 16px 60px}
+  h1{font-size:20px;font-weight:700;margin:14px 4px 16px;color:var(--accent)}
+  /* 標題層級小標籤 */
+  .lvl{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#fff;background:#9a9a9a;border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:middle;font-weight:400}
+  /* tabs */
+  .tabs{display:flex;gap:0;border-bottom:2px solid var(--line)}
+  .tabs button{appearance:none;border:1px solid var(--line);border-bottom:none;background:var(--ph2);color:var(--muted);
+    padding:10px 22px;font-size:15px;cursor:pointer;border-radius:6px 6px 0 0;margin-right:4px}
+  .tabs button.active{background:#fff;color:var(--ink);font-weight:700;border-color:var(--line);box-shadow:0 -2px 0 #888 inset}
+  /* banner placeholder */
+  .banner{height:170px;margin:18px 0 16px;border:1px dashed var(--line);border-radius:6px;
+    background:repeating-linear-gradient(45deg,var(--ph),var(--ph) 12px,var(--ph2) 12px,var(--ph2) 24px);
+    display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center}
+  /* 區塊 H2 標題 */
+  .sec{font-size:18px;font-weight:700;color:var(--accent);margin:4px 0 16px}
+  .tab-panel.hidden{display:none}
+  .prose p{margin:0 0 14px;max-width:42em}
+  .hint{color:#aaa;font-size:12px;border-left:3px solid var(--line2);padding-left:8px;margin:10px 0}
+  /* 年份跳轉導覽 */
+  .yearnav{display:flex;flex-wrap:wrap;align-items:center;margin:0 0 20px}
+  .yearnav a{font-size:13.5px;color:var(--ink);text-decoration:none;padding:3px 10px;border-right:1px solid var(--line2)}
+  .yearnav a:first-child{padding-left:0}
+  .yearnav a:hover{text-decoration:underline}
+  .yearnav a.off{color:#c2c2c2}
+  /* awards */
+  h3.year{font-size:15px;font-weight:700;border-bottom:1px solid var(--line2);padding-bottom:4px;margin:22px 0 8px;color:var(--accent);scroll-margin-top:12px}
+  .award-row{display:grid;grid-template-columns:90px 1fr 1.1fr;gap:10px;padding:6px 4px;border-bottom:1px dotted var(--line2);font-size:13.5px}
+  .award-row .date{color:var(--muted)}
+  /* rules layout */
+  .rules-layout{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:start}
+  .toc{position:sticky;top:12px;border:1px dashed var(--line);border-radius:6px;padding:10px;background:#fff;font-size:14px}
+  .toc .toc-title{font-size:12px;color:var(--muted);margin-bottom:6px}
+  .toc a{display:block;padding:6px 8px;color:var(--ink);text-decoration:none;border-radius:4px}
+  .toc a.active{background:var(--ph);font-weight:700;box-shadow:2px 0 0 #888 inset}
+  .toc a.ext::after{content:" ↗";color:var(--muted)}
+  .toc .disabled{color:#bbb;padding:6px 8px}
+  .rules-content section{margin-bottom:30px;scroll-margin-top:14px}
+  .rules-content h3{font-size:16px;margin:0 0 10px;color:var(--accent);border-bottom:1px solid var(--line2);padding-bottom:4px}
+  .rules-content h4{font-size:14px;margin:16px 0 4px;color:var(--accent)}
+  .rules-content ol,.rules-content ul{margin:0 0 6px;padding-left:22px}
+  .rules-content li{font-size:13.5px;margin:3px 0}
+  .rules-content p{font-size:13.5px;margin:6px 0;max-width:46em}
+  .sub-num{list-style:lower-roman}
+  .ext-btn{display:inline-block;margin:6px 0;border:1px solid var(--line);background:var(--ph2);padding:8px 14px;border-radius:6px;color:var(--accent);text-decoration:none;font-size:14px}
+  @media(max-width:680px){
+    .rules-layout{grid-template-columns:1fr}
+    .toc{position:static}
+    .award-row{grid-template-columns:70px 1fr;}
+    .award-row .prize{grid-column:1/-1;color:var(--muted)}
+  }
+</style>
+</head>
+<body>
+<div class="wf-flag">低保真 Wireframe · 視覺以 Figma 為準 · 標題層級以 H1/H2/H3 標示 · 得獎為 2025–2023 範例三年、自律規範為全文</div>
+
+<header class="site-header">
+  <span class="logo">TVBS</span>
+  <span class="nav">即時 · 政治 · 國際 · 生活 · 健康 · 娛樂 · …</span>
+  <span>🔍</span>
+</header>
+
+<main class="page">
+  <h1>關於我們｜TVBS新聞網—最受信任的台灣新聞媒體 <span class="lvl">H1</span></h1>
+
+  <nav class="tabs">
+    <button data-tab="about" class="active">企業理念</button>
+    <button data-tab="awards">得獎記錄</button>
+    <button data-tab="rules">自律規範</button>
+  </nav>
+
+  <!-- Tab 1：企業理念 -->
+  <section class="tab-panel" id="about">
+    <div class="banner">［ Banner（企業理念，現有公司圖）］</div>
+    <h2 class="sec">企業理念 <span class="lvl">H2</span></h2>
+    <div class="prose">
+      <p>TVBS新聞網是聯利媒體股份有限公司（TVBS Media Inc.）官方的新聞資訊平台，不僅是台灣家喻戶曉的新聞品牌，更是引領產業發展的「科技媒體」先驅。自1993年9月28日作為台灣第一個衛星電視頻道開播以來，TVBS便開啟了台灣媒體百家爭鳴的新時代，為社會帶來了多元與自由的全新價值。</p>
+      <p>TVBS新聞網承載了母公司深厚的媒體底蘊，並將其轉化為強大的數位影響力。根據牛津大學路透社新聞學研究中心發布的《全球數位新聞報告》，TVBS新聞在2024年已連續七年蟬聯「最受信賴的商業電視新聞品牌」，並連續八年榮登「最常使用的廣電新聞媒體第一名」，這充分證明了其在華文讀者心中的權威地位。</p>
+      <p>本網站的核心理念植根於TVBS的「T觀點」，即「真實」（Truth）、「信賴」（Trust）與「科技」（Technology）。TVBS新聞網的使命是「持續運用最領先的科技、提供最真實的資訊，成為最受信賴的品牌」。憑藉此一信念，TVBS新聞網不僅提供即時新聞，更致力於成為一個立足亞洲、運用全球思維的全方位媒體中心，其願景是結合旗下強大的IP品牌，打造兼具新聞報導、影視娛樂、電商通路、演藝經紀及生技產品於一身的媒體生態系。</p>
+      <p>TVBS新聞網的內容架構體現了其作為綜合性新聞平台的廣度與深度。網站的首要特色是提供了與TVBS 55新聞台同步的「Live不漏接」24小時網路直播服務，讓全球用戶無論身在何處，都能透過電腦或行動裝置，零時差掌握台灣與世界的脈動。</p>
+    </div>
+  </section>
+
+  <!-- Tab 2：得獎記錄 -->
+  <section class="tab-panel hidden" id="awards">
+    <div class="banner">［ Banner（得獎記錄）］</div>
+    <h2 class="sec">得獎記錄 <span class="lvl">H2</span></h2>
+
+    <!-- 年份跳轉導覽（沿用現況）-->
+    <nav class="yearnav">
+      <a href="#y2025">2025</a><a href="#y2024">2024</a><a href="#y2023">2023</a><a class="off" href="#">2022</a><a class="off" href="#">2021</a><a class="off" href="#">2020</a><a class="off" href="#">2019</a><a class="off" href="#">2018</a><a class="off" href="#">2017</a><a class="off" href="#">2016</a><a class="off" href="#">2015</a><a class="off" href="#">2014</a><a class="off" href="#">2013</a><a class="off" href="#">2012</a><a class="off" href="#">2011</a><a class="off" href="#">2010</a><a class="off" href="#">2009</a><a class="off" href="#">2008</a><a class="off" href="#">2006</a><a class="off" href="#">2005</a><a class="off" href="#">2002</a><a class="off" href="#">2000</a><a class="off" href="#">1997</a>
+    </nav>
+
+    <h3 class="year" id="y2025">2025 <span class="lvl">H3</span></h3>
+    <div class="award-row"><span class="date">2025-10-19</span><span>新聞專題「島國震撼－日本防災攻略」</span><span class="prize">第九屆全球華文永續報導獎 專業組影片類(長)【優等】</span></div>
+    <div class="award-row"><span class="date">2025-10-19</span><span>新聞專題「揭開健保真相－救醜難救命之島」</span><span class="prize">第九屆全球華文永續報導獎 專業組影片類(短)【首獎】</span></div>
+    <div class="award-row"><span class="date">2025-10-17</span><span>新聞節目《TVBS看板人物》</span><span class="prize">第60屆電視金鐘獎【教育文化節目主持人獎】</span></div>
+    <div class="award-row"><span class="date">2025-08-24</span><span>TVBS新聞網系列專題「后豐墜橋案一度被判15年…今獲無罪他盼定讞：沒家人撐不了」</span><span class="prize">2025年第10屆平冤年度新聞獎【文字組即時類獎】</span></div>
+    <div class="award-row"><span class="date">2025-08-16</span><span>新聞專題「沉浸式娛樂新體驗！從音樂創作到棒球訓練全面導入AI」</span><span class="prize">2025文創產業新聞報導獎【電視新聞報導獎】</span></div>
+    <div class="award-row"><span class="date">2025-07-18</span><span>新聞專題「銀髮族居住正義去哪了」</span><span class="prize">第五屆銀響力新聞獎 即時新聞獎【優選】</span></div>
+    <div class="award-row"><span class="date">2025-07-18</span><span>新聞專題「留生路給我們－照顧不離職」</span><span class="prize">第五屆銀響力新聞獎 系列專題報導獎【首獎】</span></div>
+    <div class="award-row"><span class="date">2025-06-17</span><span>TVBS 新聞</span><span class="prize">牛津大學路透社新聞學研究中心《2025全球數位新聞報告》連續八年【最受信賴之商業電視新聞品牌】、連續九年【最常使用之廣電新聞媒體第一名】</span></div>
+
+    <h3 class="year" id="y2024">2024 <span class="lvl">H3</span></h3>
+    <div class="award-row"><span class="date">2024-11-19</span><span>FOCUS全球新聞製播團隊「FOCUS全球新聞」</span><span class="prize">第23屆卓越新聞獎【新聞節目獎】</span></div>
+    <div class="award-row"><span class="date">2024-11-19</span><span>TVBS新聞部南部中心報導「10死百傷明揚國際爆炸！火神眼淚洗不清的灰色地帶」</span><span class="prize">第23屆卓越新聞獎【突發新聞獎】</span></div>
+    <div class="award-row"><span class="date">2024-10-30</span><span>新聞專題「步步為營-戰隼升級實錄」</span><span class="prize">第58屆國軍文藝金像獎 多媒體軍聞報導【銅像獎】</span></div>
+    <div class="award-row"><span class="date">2024-10-06</span><span>新聞專題「我帶你回家海洋行動」</span><span class="prize">第八屆全球華文永續報導獎 專業組影片類(長)【人氣獎】</span></div>
+    <div class="award-row"><span class="date">2024-10-06</span><span>新聞專題「他們的養蜂助農大計」</span><span class="prize">第八屆全球華文永續報導獎 專業組影片類(短)【優等】</span></div>
+    <div class="award-row"><span class="date">2024-08-15</span><span>新聞專題「他們的養蜂助農大計」</span><span class="prize">113年社會光明面新聞報導獎 電視新聞報導類【佳作】</span></div>
+    <div class="award-row"><span class="date">2024-08-15</span><span>新聞專題「我和我的博士弟弟」</span><span class="prize">113年社會光明面新聞報導獎 電視新聞報導類【佳作】</span></div>
+    <div class="award-row"><span class="date">2024-08-09</span><span>新聞專題「相思木語：台灣工藝走向國際」</span><span class="prize">2024文創產業報導獎【電視新聞報導獎】</span></div>
+    <div class="award-row"><span class="date">2024-07-19</span><span>新聞專題「孤獨死‧求生路」</span><span class="prize">第四屆銀響力新聞獎【調查報導獎】</span></div>
+    <div class="award-row"><span class="date">2024-06-17</span><span>TVBS 新聞</span><span class="prize">牛津大學路透社新聞學研究中心《2024全球數位新聞報告》連續七年【最受信賴之商業電視新聞品牌】、連續八年【最常使用之廣電新聞媒體第一名】</span></div>
+
+    <h3 class="year" id="y2023">2023 <span class="lvl">H3</span></h3>
+    <div class="award-row"><span class="date">2023-12-25</span><span>TVBS氣象團隊</span><span class="prize">第六度獲氣象應用推廣基金會【最佳氣象播報團隊】；氣象主播吳軒彤獲選【最佳氣象主播】</span></div>
+    <div class="award-row"><span class="date">2023-11-21</span><span>新聞專題「大照顧時代－孤獨死‧求生路」</span><span class="prize">第22屆卓越新聞獎【長篇深度報導獎】</span></div>
+    <div class="award-row"><span class="date">2023-11-12</span><span>TVBS新聞網專題「國境攔截者」</span><span class="prize">112年台灣醫療報導獎 新媒體類【優勝】</span></div>
+    <div class="award-row"><span class="date">2023-10-15</span><span>新聞專題「孤獨死‧求生路」</span><span class="prize">第七屆全球華文永續報導獎專業組 影片類（長）【社會價值獎】</span></div>
+    <div class="award-row"><span class="date">2023-10-15</span><span>新聞專題「門外漢執著精品梨」</span><span class="prize">第七屆全球華文永續報導獎專業組 影片類（短）【優等獎】</span></div>
+    <div class="award-row"><span class="date">2023-10-14</span><span>TVBS News YouTube節目「認真問-2027台灣是真的要打仗了嗎？」</span><span class="prize">第五屆走鐘獎【最佳影響力獎】</span></div>
+    <div class="award-row"><span class="date">2023-09-13</span><span>新聞專題「一觸即發 直擊最前線」</span><span class="prize">第57屆國軍文藝金像獎 多媒體軍聞報導【銅像獎】</span></div>
+    <div class="award-row"><span class="date">2023-08-16</span><span>新聞專題「豬肉財醫生的鐵血大計」</span><span class="prize">112年度社會光明面新聞報導獎 電視新聞報導類【特優】</span></div>
+    <div class="award-row"><span class="date">2023-07-19</span><span>健康2.0 網路報導《裴洛西82歲像4、50歲…》</span><span class="prize">第三屆銀響力新聞獎 平面及網路(文字)類【優選】</span></div>
+    <div class="award-row"><span class="date">2023-06-14</span><span>TVBS 新聞</span><span class="prize">牛津大學路透社新聞學研究中心《2023全球數位新聞報告》連續六年【最受信賴之商業電視新聞品牌】、連續七年【最常使用之廣電新聞媒體第一名】</span></div>
+
+    <p class="hint">本 prototype 僅放 2025–2023 三年範例；2022 至 1997 之年份分組依同一 pattern 續接（年份標題為 H3）。所有年份內容皆在頁上、不收合，年份導覽只是跳轉捷徑（灰色年份此處未填資料）。</p>
+  </section>
+
+  <!-- Tab 3：自律規範 -->
+  <section class="tab-panel hidden" id="rules">
+    <div class="banner">［ Banner（自律規範）］</div>
+    <h2 class="sec">自律規範 <span class="lvl">H2</span></h2>
+    <div class="rules-layout">
+      <aside class="toc">
+        <div class="toc-title">目錄</div>
+        <a href="#r-ten" class="active">新聞十誡</a>
+        <a href="#r-ethics">道德與採訪守則</a>
+        <a href="#r-covenant">編輯室公約</a>
+        <a href="#r-committee">倫理委員會組織章程</a>
+        <a href="#r-minutes" class="ext">倫理委員會會議紀錄</a>
+        <span class="disabled">更正與澄清（MVP 不做）</span>
+      </aside>
+
+      <div class="rules-content">
+        <section id="r-ten">
+          <h3>① TVBS新聞十誡 <span class="lvl">H3</span></h3>
+          <ol>
+            <li>生命安全第一，新聞採訪第二。</li>
+            <li>反覆查證真實為上，絕不偽造作假。</li>
+            <li>不得造成受害者及其家屬的二次傷害。</li>
+            <li>不得造成警消醫護執行公務的延誤。</li>
+            <li>不因個人觀點或利益影響公正。</li>
+            <li>不因刻板印象傷害弱勢團體。</li>
+            <li>尊重各族群、宗教、文化的價值觀。</li>
+            <li>新聞製作務必符合法律規範與普級原則。</li>
+            <li>尊重智慧財產權。</li>
+            <li>保護消息來源。</li>
+          </ol>
+        </section>
+
+        <section id="r-ethics">
+          <h3>② TVBS新聞道德與採訪守則 <span class="lvl">H3</span></h3>
+
+          <h4>一、原則：新聞報導不得有下列情形</h4>
+          <ol>
+            <li>違反法律強制或禁止規定。</li>
+            <li>妨害兒童或少年身心健康。</li>
+            <li>妨害公共秩序或善良風俗。</li>
+            <li>違反真實與平衡原則。</li>
+          </ol>
+
+          <h4>二、事實查核</h4>
+          <p><strong>（一）新聞查証</strong></p>
+          <ol>
+            <li>新聞首重真實查證，避免道聽塗說，與刻意曲解事實。</li>
+            <li>採訪對象應求周延公平與完整，避免過度依賴單一消息來源。</li>
+            <li>報導時應持質疑態度客觀檢視事件訊息之正確性、合理性，就消息來源、訊息內容正確性進行嚴謹之查證。</li>
+            <li>針對所有消息內容，包括網路資料或外電消息，均應多方求證。</li>
+            <li>採訪時或採訪後宜留下記錄，並保留查證過程資料以供事後查驗。</li>
+            <li>新聞報導應註明引述來源，方便民眾訊息判斷。若對消息來源有保護義務時，應於新聞呈現時進行必要之隱匿。若因故無法就訊息充分查證或需要引用匿名之消息來源，應該於報導中說明，方便觀眾辨識。</li>
+            <li>對於來自網路而來源不明的圖片或影片，應注意是否經過變造、拼湊、修改，必要時請影像處理專家協助辨識。</li>
+            <li>若有錯誤，應立即更正。</li>
+          </ol>
+          <p><strong>（二）爆料、投訴新聞</strong></p>
+          <ol>
+            <li>爆料、投訴等新聞需經查證確認事實和正確性，播出內容需有出處及充足的證據，不得毫無根據的猜測。</li>
+            <li>非私人糾紛或挾怨報復，並達公眾關注標準，才有報導價值。</li>
+            <li>務必聯繫雙方當事人提出回應，並確認回應人的代表性，在遵守平衡原則下進行報導。</li>
+            <li>必要時採訪第三方公正權威人士，以作為報導的依據。</li>
+            <li>若涉及企業商譽新聞，盡量取得政府機關公開說法或具體檢測數據，以作為報導依據。</li>
+            <li>為落實正確性，需儘可能檢查驗證所有採訪內容、事實和文件。若無法充份驗證，需就訊息內容誠實說明。</li>
+            <li>引用任何爆料投訴內容，就算來自可信的人或網路，都不能假設訊息是正確的，都需要驗證。</li>
+            <li>爆料投訴相關採訪時儘可能保留完整採訪記錄、對話和資料。</li>
+            <li>爆料投訴受訪者不得為公司員工。</li>
+          </ol>
+          <p><strong>（三）引用網路訊息</strong></p>
+          <ol>
+            <li>引用網路訊息要注意內容的正確和真實，即使來自可信的網站來源也未必正確，務必善盡查證責任。</li>
+            <li>引用網路訊息需採訪和收集第一手資訊，避免依賴單一消息來源。</li>
+            <li>若以網路畫面作為新聞報導線索，應審慎查證，確認真實性、拍攝時間地點，盡可能連繫或採訪到影音上傳者，確認得以播出。</li>
+            <li>針對網路霸凌事件中之無辜受害者，報導時秉持保護原則，注意案件當中可能涉及之侵犯隱私權、兒少法等，避免助長謠言傳遞。</li>
+            <li>製播網路來源新聞宜註明出處。</li>
+          </ol>
+
+          <h4>三、兒少新聞</h4>
+          <ol>
+            <li>報導兒少新聞應以其最佳利益為優先考量，避免對當事人造成傷害。</li>
+            <li>報導未滿18歲的兒童及少年，若涉及違法或撫養權爭奪，皆不得出現兒少姓名或其它足以辨識身分的資訊和影片。包括兒少住址、學校、親屬姓名，影像需馬賽克、聲音需變音處理。</li>
+          </ol>
+
+          <h4>四、性侵害、性騷擾被害人及家暴新聞</h4>
+          <ol>
+            <li>新聞報導應善盡保護性侵害、性騷擾被害人，及家暴受害人之責任。不得出現足以辨識被害人身分的資訊和影像，圖片影像需馬賽克、聲音需變音處理。</li>
+            <li>若加害人與被害人有親屬關係，亦應隱去加害人的相關資訊。</li>
+          </ol>
+
+          <h4>五、精神病患、身心障礙者新聞</h4>
+          <ol>
+            <li>避免對身心障礙者污名化以及突顯負面刻板印象。</li>
+            <li>不得出現足以辨識被害人身份的資訊和圖片。</li>
+          </ol>
+
+          <h4>六、犯罪新聞</h4>
+          <ol>
+            <li>注意「無罪推定原則」，不管在內文或標題用字要精準，在案情不明朗之前，應該說『疑似』或是『嫌疑人』，並引述檢警的說法。在證據不足的情況下，勿直接武斷下結論，必需依據事實，善盡查證責任。</li>
+            <li>尊重被害家屬感受，避免對家屬做侵入式採訪和拍攝，以免二度傷害。</li>
+            <li>作案過程的報導勿過度仔細描述，引起民眾不安，不要為了搶快而未盡查證責任，避免造成受害家屬困擾。</li>
+            <li>對於嫌犯勿標籤化、英雄化和主觀敘述，也應避免激化觀眾情緒與對立。</li>
+          </ol>
+
+          <h4>七、災難和意外新聞</h4>
+          <ol>
+            <li>謹慎處理畫面，避免過度呈現令人驚懼的畫面，遺體、血腥畫面，不宜特寫拍攝。若無法避免拍攝，需後製處理再播出，將畫面馬賽克或定格處理。</li>
+            <li>對於現場記者最新回報訊息，除非是官方正式發佈，應請採訪主管再查證確認。</li>
+            <li>死亡名單需嚴謹遵守官方發佈內容與時間。記者輾轉獲悉之最新死傷名單，除非是官方正式發佈，始可播出，否則寧可暫緩，向救災單位主官查證後再發佈。</li>
+            <li>處理失蹤人員是否獲救或罹難之訊息應更為謹慎，在未能證實獲救或罹難之前，應以保守方式處理，記者報導時皆需以「疑似」之用語。</li>
+            <li>注意用字遣詞，避免誇大聳動用語。</li>
+            <li>採訪拍攝時切勿妨礙或因任何理由延緩救災人員作業。</li>
+          </ol>
+
+          <h4>八、綁架、恐攻挾持新聞</h4>
+          <ol>
+            <li>人質事件處於未公開狀態時，媒體不宜報導，僅向檢警蒐集資訊做為背景參考。</li>
+            <li>人質事件處於已公開狀態時，人質安全為最高考量，凡是涉及案件之談判策略、籌碼、技巧、行動，與可能導致交涉破裂之情節，均不宜報導。</li>
+            <li>配合專業權責單位的指揮，以及高度尊重家屬意願之下審慎處理，不得有危害人質生命、妨礙犯罪偵查。</li>
+            <li>不論人質事件處於未公開或已公開狀態，媒體不可妨礙警方談判與營救任務，避免擅自與人質及犯罪行為人接觸，不可主動聯絡、採訪犯罪行為人或人質。若有無法避免之接觸，不做現場LIVE直播，並應盡速向警方報案。</li>
+            <li>人質事件已公開狀態下，媒體報導不可受到犯罪行為人操控，避免成為犯罪行為人的傳播管道。</li>
+            <li>人質事件已公開狀態時，謹慎處理關於家屬親友之報導素材，非僅呈現衝突現場，避免炒作情緒，避免擅自傳送訊息，審慎衡量相關報導是否會妨礙警方辦案與危及人質生命安全。</li>
+          </ol>
+
+          <h4>九、示威暴動新聞</h4>
+          <ol>
+            <li>遵守中立、客觀的報導立場。</li>
+            <li>在現場非必要勿與參與民眾討論，更切忌表態，注意修辭勿激化情緒。</li>
+            <li>注意SNG連線甚至可能被當成示威者的宣傳工具。</li>
+          </ol>
+
+          <h4>十、自殺新聞</h4>
+          <ol>
+            <li>自殺事件屬於個人行為和情緒，或與公共利益無關，且非公眾人物或知名人士自殺，不予報導。</li>
+            <li>考量自殺事件恐引發模仿效應，報導應著重事件本身的社會意義，避免將自殺事件英雄化或浪漫化。</li>
+            <li>避免太過詳細敘述自殺過程，及如何取得自殺物品工具之方法。報導時避免出現上吊、割腕、跳樓等刺激性字眼和標題。</li>
+            <li>自殺新聞不以live連線形式播出。跳樓畫面需定格處理。</li>
+            <li>必要時採訪學者專家，提供走出自殺陰影危機的協助管道。</li>
+          </ol>
+
+          <h4>十一、醫療新聞</h4>
+          <ol>
+            <li>記者進入醫院，不能影響醫療作業。採訪病患和家屬，須先表明記者身份，並獲得院方或當事人同意，方得進行採訪。</li>
+            <li>醫生進行醫療行為時，未經院方或病患同意，不宜採訪，對涉及暴露病人生理隱私之畫面，不得播出。</li>
+            <li>對於重大流行疾病疫情之報導，應以主管機關發佈之資訊為準。</li>
+            <li>傳染病病人或疑似感染傳染病之病人之姓名、病歷及病史等有關資料，除主管機關發佈之資料外，不得報導。</li>
+          </ol>
+
+          <h4>十二、消費新聞</h4>
+          <ol>
+            <li>避免報導單一產品，報導內容應比較兩家產品以上，勿為單一產品廣告促銷。</li>
+            <li>涉及產品功能或宣傳效果的受訪廠商皆以業者冠之，不揭露廠商名稱，不特寫產品和公司名稱。</li>
+          </ol>
+
+          <h4>十三、靈異新聞</h4>
+          <ol>
+            <li>新聞內容避免怪力亂神。</li>
+            <li>靈異、通靈、觀落陰、或其他玄奇詭異等涉及超自然現象，其情節讓人驚恐不安者，不得播出。</li>
+          </ol>
+
+          <h4>十四、性別與弱勢族群新聞</h4>
+          <ol>
+            <li>新聞應以客觀、非歧視字眼報導同志新聞。</li>
+            <li>避免歧視資源弱勢的新移民、原住民等族群。在稱呼上，不使用外籍新娘、大陸妹，應採用新移民、外籍配偶、大陸配偶、原住民等中性平等用詞，且不得宣傳或主張特定國籍之優劣。</li>
+            <li>以愛滋「感染者」取代「帶原者」的稱呼，並應尊重感染者的基本尊嚴與權益。未經當事人同意，不得進行採訪。</li>
+          </ol>
+
+          <h4>十五、普級規範：性、裸露、血腥暴力恐怖</h4>
+          <ol>
+            <li>新聞皆屬普級，應考量符合闔家觀賞之原則，避免文字詳細敘述暴力恐怖細節和畫面血腥暴力，畫面需嚴格馬賽克或定格處理，不是薄薄的馬賽克，不能出現足以辨識其血腥暴力的畫面。不得對未滿六歲之兒童發生不良影響之暴力、血腥、恐怖，引發未滿六歲之兒童模仿有傷害自己或別人之虞等情節。</li>
+            <li>所有色情性愛露點猥褻畫面皆依法規嚴格處理。</li>
+            <li>注意性暗示的畫面和動作，避免官能刺激和猥褻。</li>
+          </ol>
+
+          <h4>十六、尊重個人隱私和個資保護</h4>
+          <ol>
+            <li>除考量公共利益時，否則不得侵犯任何人私生活。當私人隱私損及公共利益時，媒體採訪報導需防止不當傷害個人名譽及侵犯個人隱私。</li>
+            <li>不得露出受訪者的住址、車牌號碼、手機號碼、金融帳戶、和醫療記錄等個人資訊。</li>
+          </ol>
+
+          <h4>十七、尊重智慧財產權</h4>
+          <ol>
+            <li>臉書使用者之文章內容或從YOUTUBE等網路來源取得之畫面需註明出處，播出時需以字幕註明引用出處，引用量以必要、最小程度為原則。翻拍照片不能特寫，不能以特效後製方式擷取部份畫面改作割裂。</li>
+            <li>著作權人對網頁圖／照片智慧財產權作出禁制聲明者，不得翻拍。</li>
+            <li>引用任何平面媒體新聞、翻拍照片需全程以字幕註明引用出處。翻拍照片時，每一個鏡頭都必須在過程中帶到旁邊的印刷文字。翻拍後的內容不能以特效後製方式擷取部份畫面改作割裂。</li>
+            <li>觀眾或外界提供畫面，應確認智慧財產權歸屬，並查證內容真實性後，始得播出。</li>
+            <li>有關網路圖片，在著作權人不明及無法取得著作權人同意的情況下，翻拍照片原則如下：
+              <ol class="sub-num">
+                <li>拍攝網路影片時，不得滿格，必須留框、留邊，鏡頭應盡量拉遠。</li>
+                <li>翻拍的內容必須是該則新聞報導必要而不可或缺的元素。使用之網路素材，不能使用超過該素材全長的1/3，使用於新聞SOT帶中亦不得超過該SOT帶的1/3。</li>
+                <li>播出時相關畫面需全程以字幕註明引用出處。（不確定來源者：翻攝自網路）</li>
+                <li>翻拍後的內容不能以特效後製方式擷取部份畫面改作割裂。</li>
+              </ol>
+            </li>
+            <li>引用國內電子媒體：
+              <ol class="sub-num">
+                <li>翻拍電子媒體播出時，不得滿格，必須留電視機外框。不得LIVE同步播出。</li>
+                <li>翻拍的內容必須是該則新聞報導必要而不可或缺的元素。使用之翻拍畫面，不使用超過該素材全長的1/3，使用於新聞SOT帶中亦不得超過該SOT帶的1/3。</li>
+                <li>播出時相關畫面需全程以字幕註明引用出處。</li>
+                <li>翻拍後的內容可當ROLL帶，但不能以特效後製方式擷取部份畫面改作割裂。</li>
+              </ol>
+            </li>
+          </ol>
+
+          <h4>十八、採訪注意事項</h4>
+          <p><strong>（一）不自行採訪罪犯、引用嫌犯自拍</strong></p>
+          <ol>
+            <li>絕不可以在檢警不知情的狀況下，以任何方式採訪通緝犯(嫌犯)、逃犯。</li>
+            <li>現行犯在警方未查知其犯行前，應在採訪前通知警方，不可以LIVE直播。</li>
+            <li>嫌犯自拍行兇過程，避免對受害者二度傷害及成為嫌犯攻擊意圖的工具，不宜播出。</li>
+          </ol>
+          <p><strong>（二）電話錄音受訪者</strong></p>
+          <ol>
+            <li>電話錄音開始之前，必須明確讓受訪者知道並同意將被錄音，否則不可使用。</li>
+            <li>不可用剪接方式改變受訪者回答訪談的原意。</li>
+          </ol>
+          <p><strong>（三）隱藏攝影機</strong></p>
+          <ol>
+            <li>使用隱藏攝影機僅限於揭發傷害公眾利益的事件，或是違法犯罪行為。</li>
+            <li>引用非TVBS員工所拍攝的隱藏攝影機畫面；需考慮是否會違法或被告。</li>
+            <li>任何工作人員都有絕對獨立自主拒絕任務的權利。在對方不知情的狀況下以普通或專業攝影機拍攝知名人士等同隱藏攝影機。</li>
+          </ol>
+          <p><strong>（四）戲劇化演出</strong></p>
+          <ol>
+            <li>不以戲劇化演出方式模擬新聞事件。</li>
+            <li>不應該為了強化新聞效果，去要求受訪者特別作出平常不會作的動作。</li>
+          </ol>
+
+          <h4>十九、涉己新聞</h4>
+          <p>（一）涉己新聞係指新聞報導涉及本公司董監事，且非公共議題之新聞內容。</p>
+          <p>（二）涉己新聞報導原則：</p>
+          <ol>
+            <li>報導涉己新聞，應以公共利益為優先，秉持公正客觀的精神，維護媒體的公正性，同時兼顧多元價值。</li>
+            <li>報導涉己新聞時，應嚴守平衡報導原則，賦予雙方當事人說明機會。</li>
+            <li>為保障閱聽人權益，處理涉己新聞，必需注意合理比例，不應排擠其他新聞的播出。</li>
+          </ol>
+        </section>
+
+        <section id="r-covenant">
+          <h3>③ TVBS新聞編輯室公約 <span class="lvl">H3</span></h3>
+          <p>為確保聯利媒體股份公司經營運作之TVBS新聞台符合專業自主精神，特由聯利媒體股份公司代表人與新聞及節目部主管協調制定本公約，供本公司與新聞部及新聞節目相關同仁共同遵循。</p>
+          <ol>
+            <li>TVBS新聞所有採訪、編輯、製播內容以提供專業真實、公正客觀之新聞資訊為宗旨。新聞部及新聞節目相關同仁願在追求民主精神、落實言論自由的前提下，致力提供多元完整且確實的資訊。</li>
+            <li>TVBS新聞由新聞部同仁依新聞採編製播流程產出，新聞部各層級單位主管應符合新聞專業並嚴守自律規範。並設置新聞編審落實內控機制。</li>
+            <li>聯利媒體董事會、經營階層或其他業務、行政等主管不得以違背新聞專業精神之任何理由，干預新聞內容與自律空間，包括人事獎懲等方式，以維護TVBS新聞專業自主。</li>
+            <li>公司及新聞台員工不得收受任何不當利益，交換或關說製播任何違反新聞專業之報導。</li>
+            <li>新聞報導內容若涉及聯利媒體董事會且非公共議題，則屬涉己新聞，新聞台應依TVBS新聞道德與採訪守則規範之涉己新聞原則處理。</li>
+            <li>若遇外部不當干預，聯利媒體董事會、經營階層應支持TVBS新聞獨立自主運作，維護新聞專業價值。</li>
+            <li>TVBS新聞相關同仁採訪、編輯與製作應遵守TVBS新聞十誡，並依TVBS新聞道德與採訪守則規範自律。新聞部及新聞節目相關同仁應定期召開倫理委員會落實自律。</li>
+          </ol>
+        </section>
+
+        <section id="r-committee">
+          <h3>④ TVBS新聞倫理委員會組織章程 <span class="lvl">H3</span></h3>
+          <p>一、聯利媒體股份有限公司為維護新聞倫理，善盡媒體自律責任，特設立TVBS新聞倫理委員會（下稱「本委員會」），並訂定本組織章程，以資規範。</p>
+          <p>二、本委員會設委員七至九名，含內、外部委員。外部委員由本公司聘請專家學者擔任，人數應逾委員總額二分之一。內部委員由本公司新聞部高階主管及其指派之兩名相關專業同仁擔任。</p>
+          <p>三、本委員會召集人由外部委員互推一人擔任之，負責召開及主持委員會議。本委員會每季召開一次例行會議；必要時，得依任一委員之請求，召開臨時會議。本委員會應有外部委員二分之一以上出席，始得開會；會議之決議，應以過半數出席委員之同意行之。本委員會開會時，得邀請新聞部各中心主管、相關業務同仁及法務主管列席。</p>
+          <p>四、本委員會之任務如下：</p>
+          <ol>
+            <li>增進本公司了解外界對TVBS新聞頻道內容之看法；監督本公司回應觀眾申訴意見或處理觀眾權益受損事件之具體作為或改善措施；聽取專家建議，作為督促提升新聞傳播品質之參考。</li>
+            <li>聽取新聞部自律檢討報告，並提出改善建議。針對新聞部定期提出之編採會議自律檢討內容，委員得主動提案討論如何精進新聞或節目之製播品質；但委員之提案權，不受限於TVBS新聞部或節目部設定之議題。</li>
+            <li>針對有違反新聞倫理疑慮之新聞報導或節目內容，委員得深入瞭解或調查其製播流程，並提出改善建議，包括如何修訂TVBS新聞道德與採訪守則相關條文之意見，以提升TVBS之新聞、節目品質與從業人員素質。必要時，新聞部應規劃進行相關教育訓練，並向委員會提出報告。</li>
+            <li>對內公告本委員會之具體建議，作為從業人員精進專業知能之參考，並於TVBS新聞網站公布會議紀錄。</li>
+          </ol>
+        </section>
+
+        <section id="r-minutes">
+          <h3>⑤ TVBS新聞倫理委員會會議紀錄 <span class="lvl">H3</span></h3>
+          <p>歷次倫理委員會會議紀錄（2012 年第一次會議起至今）提供下載，連至 portal 取得完整檔案；本站不複製檔案。</p>
+          <a class="ext-btn" href="https://www.tvbs.com.tw/news-rule" target="_blank" rel="noopener">前往會議紀錄下載 ↗ （www.tvbs.com.tw/news-rule）</a>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Tab 切換
+  const tabs = document.querySelectorAll('.tabs button');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(btn => btn.addEventListener('click', () => {
+    tabs.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const id = btn.dataset.tab;
+    panels.forEach(p => p.classList.toggle('hidden', p.id !== id));
+    window.scrollTo({top:0, behavior:'instant'});
+  }));
+
+  // 自律規範 目錄 active 高亮（捲動偵測）
+  const tocLinks = document.querySelectorAll('.toc a[href^="#r-"]');
+  const secs = [...tocLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+e.target.id));
+      }
+    });
+  }, {rootMargin:'-10% 0px -70% 0px'});
+  secs.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
