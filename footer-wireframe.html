@@ -56,16 +56,10 @@
   .mob .brand .slogan{text-align:center}
   .mob .contact-block{margin:10px 0 14px}
   .mob .icons{justify-content:flex-start}
-  .acc{border-top:1px solid var(--ft-line)}
-  .acc-item{border-bottom:1px solid var(--ft-line)}
-  .acc-head{display:flex;justify-content:space-between;align-items:center;width:100%;
-    background:none;border:none;color:#fff;font-size:14px;font-weight:700;
-    padding:14px 2px;cursor:pointer;text-align:left;font-family:inherit}
-  .acc-head .chev{color:var(--ft-muted);font-size:12px;transition:transform .15s}
-  .acc-item.open .acc-head .chev{transform:rotate(180deg)}
-  .acc-panel{display:none;padding:0 2px 14px}
-  .acc-item.open .acc-panel{display:block}
-  .acc-panel .lnk-list{gap:9px}
+  .mob-groups{border-top:1px solid var(--ft-line)}
+  .mgrp{border-bottom:1px solid var(--ft-line);padding:14px 2px}
+  .mgrp .grp-title{margin-bottom:10px}
+  .mgrp .lnk-list{gap:9px}
 </style>
 </head>
 <body>
@@ -157,7 +151,7 @@
   <!-- ============ Mobile ============ -->
   <div class="view-title">Mobile（手機・直式・accordion 可點）</div>
   <div class="device mob">
-    <div class="bar">mobile · ~380px · 點群組標題展開/收合</div>
+    <div class="bar">mobile · ~380px · 全部展開（不收合）</div>
     <div class="body-ph">［ 頁面內容區 … ］</div>
     <footer class="ft">
       <!-- 品牌區常駐 -->
@@ -170,44 +164,38 @@
         <p class="contact"><b>觀眾服務專線：</b><a href="tel:0226561599">02-2656-1599</a></p>
       </div>
 
-      <!-- accordion -->
-      <div class="acc">
-        <div class="acc-item">
-          <button class="acc-head">TVBS新聞網 <span class="chev">▼</span></button>
-          <div class="acc-panel">
-            <div class="lnk-list">
-              <a href="https://camadalobster-source.github.io/tvbs-about-wireframe/" target="_blank" rel="noopener">關於我們</a>
-              <a href="https://schedule.tvbs.com.tw/" target="_blank" rel="noopener">56新聞台節目表</a>
-              <span class="lnk" style="color:#6f6f6f">更正與澄清（MVP 不做）</span>
-            </div>
+      <!-- 三群組全部展開（不收合）-->
+      <div class="mob-groups">
+        <div class="mgrp">
+          <p class="grp-title">TVBS新聞網 <span class="tag">本站</span></p>
+          <div class="lnk-list">
+            <a href="https://camadalobster-source.github.io/tvbs-about-wireframe/" target="_blank" rel="noopener">關於我們</a>
+            <a href="https://schedule.tvbs.com.tw/" target="_blank" rel="noopener">56新聞台節目表</a>
+            <span class="lnk" style="color:#6f6f6f">更正與澄清（MVP 不做）</span>
           </div>
         </div>
-        <div class="acc-item">
-          <button class="acc-head">政策與隱私 <span class="chev">▼</span></button>
-          <div class="acc-panel">
-            <div class="lnk-list">
-              <a href="https://account.tvbs.com.tw/policy/privacy" target="_blank" rel="noopener">隱私權政策</a>
-              <a href="https://www.tvbs.com.tw/ours/company/anti-sexul-harassment" target="_blank" rel="noopener">性騷擾防治措施</a>
-              <a href="https://www.tvbs.com.tw/policies/terms" target="_blank" rel="noopener">網站使用協定</a>
-              <a href="https://www.tvbs.com.tw/policies/copyright" target="_blank" rel="noopener">版權宣告</a>
-            </div>
+        <div class="mgrp">
+          <p class="grp-title">政策與隱私</p>
+          <div class="lnk-list">
+            <a href="https://account.tvbs.com.tw/policy/privacy" target="_blank" rel="noopener">隱私權政策</a>
+            <a href="https://www.tvbs.com.tw/ours/company/anti-sexul-harassment" target="_blank" rel="noopener">性騷擾防治措施</a>
+            <a href="https://www.tvbs.com.tw/policies/terms" target="_blank" rel="noopener">網站使用協定</a>
+            <a href="https://www.tvbs.com.tw/policies/copyright" target="_blank" rel="noopener">版權宣告</a>
           </div>
         </div>
-        <div class="acc-item">
-          <button class="acc-head">認識 TVBS <span class="chev">▼</span></button>
-          <div class="acc-panel">
-            <div class="lnk-list">
-              <a href="https://www.tvbs.com.tw/ours/company" target="_blank" rel="noopener">公司介紹</a>
-              <a href="https://news.tvbs.com.tw/inter-news" target="_blank" rel="noopener">企業動態</a>
-              <a href="https://www.tvbs.com.tw/careers/" target="_blank" rel="noopener">人才招募</a>
-              <a href="https://www.tvbs.com.tw/anchor" target="_blank" rel="noopener">主播專區</a>
-              <a href="https://starvision.tvbs.com.tw/home" target="_blank" rel="noopener">星藝象娛樂</a>
-              <a href="https://www.tvbs.com.tw/copyright" target="_blank" rel="noopener">節目版權銷售</a>
-              <a href="https://www.tvbs.com.tw/tender" target="_blank" rel="noopener">公開招標</a>
-              <a href="https://www.tvbs.com.tw/ours/advertise" target="_blank" rel="noopener">業務服務</a>
-              <a href="https://www.tvbs.com.tw/ours/company/announcement/latest" target="_blank" rel="noopener">官方聲明</a>
-              <a href="https://www.tvbs.com.tw/ours/company/moment-of-glory" target="_blank" rel="noopener">獲獎紀錄／認證</a>
-            </div>
+        <div class="mgrp">
+          <p class="grp-title">認識 TVBS <span class="tag">集團</span></p>
+          <div class="lnk-list">
+            <a href="https://www.tvbs.com.tw/ours/company" target="_blank" rel="noopener">公司介紹</a>
+            <a href="https://news.tvbs.com.tw/inter-news" target="_blank" rel="noopener">企業動態</a>
+            <a href="https://www.tvbs.com.tw/careers/" target="_blank" rel="noopener">人才招募</a>
+            <a href="https://www.tvbs.com.tw/anchor" target="_blank" rel="noopener">主播專區</a>
+            <a href="https://starvision.tvbs.com.tw/home" target="_blank" rel="noopener">星藝象娛樂</a>
+            <a href="https://www.tvbs.com.tw/copyright" target="_blank" rel="noopener">節目版權銷售</a>
+            <a href="https://www.tvbs.com.tw/tender" target="_blank" rel="noopener">公開招標</a>
+            <a href="https://www.tvbs.com.tw/ours/advertise" target="_blank" rel="noopener">業務服務</a>
+            <a href="https://www.tvbs.com.tw/ours/company/announcement/latest" target="_blank" rel="noopener">官方聲明</a>
+            <a href="https://www.tvbs.com.tw/ours/company/moment-of-glory" target="_blank" rel="noopener">獲獎紀錄／認證</a>
           </div>
         </div>
       </div>
@@ -227,20 +215,13 @@
       <div class="ft-bottom">© 2026 TVBS Media Inc. All Rights Reserved.<br>台北市內湖區瑞光路451號 | 聯利媒體股份有限公司</div>
     </footer>
   </div>
-  <p class="legend">Mobile（順序同 Staging）：品牌／客服在上 → 三群組 accordion（預設收合、點展開，仿健康 2.0）→ 社群 icon → App 下載 → 版權（最底）。認識 TVBS 展開為單欄垂直 10 項（5+5 僅桌機）。</p>
+  <p class="legend">Mobile（順序同 Staging）：品牌／客服在上 → 三群組（全部展開、不收合）→ 社群 icon → App 下載 → 版權（最底）。認識 TVBS 單欄垂直列 10 項（5+5 僅桌機）。</p>
 
   <p class="legend">連結說明：「關於我們」連至 about-us wireframe 線上頁 <code>camadalobster-source.github.io/tvbs-about-wireframe</code>。「節目版權銷售」已用修正後正確網址 <code>/copyright</code>。「節目表」連 schedule 站（正式版鎖 56新聞台＋當天日期，屬規格）。<b>※ App 下載</b>暫連官方下載說明頁，最終行為（Mobile 跳商店／Desktop 導說明頁）依「App 下載」另卡定案。</p>
 
   <p class="legend" style="border-color:#e0c97a;color:#9a7d2a">SEO 註記（給工程）：收合內容須留在初始 HTML、以 CSS 收合，勿移出 DOM 或 lazy load，確保爬蟲讀得到所有 footer 連結（同 about-us「Tab 收起仍 full weight」原則）。可沿用既有 Accordion 元件、參考健康 2.0 footer 實作。</p>
 </div>
 
-<script>
-  // Mobile accordion 切換（預設全收合）
-  document.querySelectorAll('.acc-head').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.parentElement.classList.toggle('open');
-    });
-  });
-</script>
+<!-- 無互動：PC 與 Mobile 皆為靜態展開（不收合）-->
 </body>
 </html>
