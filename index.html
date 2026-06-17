@@ -12,14 +12,28 @@
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:#fafafa;line-height:1.7}
-  .wf-flag{position:fixed;top:8px;right:8px;z-index:50;background:#fff3cd;border:1px solid #e0c97a;color:#7a5d00;font-size:12px;padding:4px 8px;border-radius:4px;max-width:300px}
-  .site-header{display:flex;align-items:center;gap:16px;padding:10px 16px;background:var(--ph);border-bottom:1px dashed var(--line);font-size:13px;color:var(--muted)}
-  .site-header .logo{font-weight:700;color:var(--accent);border:1px solid var(--line);padding:2px 8px;border-radius:3px}
-  .site-header .nav{display:flex;gap:14px;flex:1}
-  .page{max-width:920px;margin:0 auto;padding:20px 16px 60px}
+  /* sticky header（模擬真實站頭；無快訊、桌機無 sidebar）*/
+  .site-header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line)}
+  .hd-inner{max-width:1152px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:16px}
+  .hd-logo{font-weight:800;font-size:22px;color:#0a4fa0;letter-spacing:.5px}
+  .hd-logo b{color:var(--ink);margin-left:6px;padding-left:6px;border-left:2px solid var(--ink)}
+  .hd-spacer{flex:1}
+  .hd-search{display:flex;align-items:center;gap:10px}
+  .hd-search input{width:200px;height:30px;border:1px solid var(--line);border-radius:3px;padding:0 8px;font-size:13px}
+  .hd-search .icons{color:var(--accent);font-size:18px;letter-spacing:6px;cursor:pointer}
+  .page{max-width:1152px;margin:0 auto;padding:20px 16px 60px}
+  /* wireframe 說明面板（浮動，不佔真實畫面）*/
+  .wf-info-btn{position:fixed;right:16px;bottom:16px;z-index:200;background:#4a4a4a;color:#fff;border:none;border-radius:20px;padding:8px 14px;font-size:13px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .wf-info{position:fixed;right:16px;bottom:58px;z-index:200;width:300px;max-width:calc(100vw - 32px);background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;box-shadow:0 4px 16px rgba(0,0,0,.2);font-size:13px;line-height:1.6;display:none}
+  .wf-info.open{display:block}
+  .wf-info h4{margin:0 0 8px;font-size:13px;color:var(--accent)}
+  .wf-info ul{margin:0 0 10px;padding-left:18px}
+  .wf-info li{margin:4px 0}
+  .wf-info label{display:flex;align-items:center;gap:6px;cursor:pointer;border-top:1px solid var(--line2);padding-top:10px}
   h1{font-size:20px;font-weight:700;margin:14px 4px 16px;color:var(--accent)}
   /* 標題層級小標籤 */
-  .lvl{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#fff;background:#9a9a9a;border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:middle;font-weight:400}
+  .lvl{font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#fff;background:#9a9a9a;border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:middle;font-weight:400;display:none}
+  .show-lvl .lvl{display:inline-block}
   /* tabs */
   .tabs{display:flex;gap:0;border-bottom:2px solid var(--line)}
   .tabs button{appearance:none;border:1px solid var(--line);border-bottom:none;background:var(--ph2);color:var(--muted);
@@ -32,7 +46,7 @@
   /* 區塊 H2 標題 */
   .sec{font-size:18px;font-weight:700;color:var(--accent);margin:4px 0 16px}
   .tab-panel.hidden{display:none}
-  .prose p{margin:0 0 14px;max-width:42em}
+  .prose p{margin:0 0 14px}
   .hint{color:#aaa;font-size:12px;border-left:3px solid var(--line2);padding-left:8px;margin:10px 0}
   /* 年份跳轉導覽 */
   .yearnav{display:flex;flex-wrap:wrap;align-items:center;margin:0 0 20px}
@@ -41,23 +55,23 @@
   .yearnav a:hover{text-decoration:underline}
   .yearnav a.off{color:#c2c2c2}
   /* awards */
-  h3.year{font-size:15px;font-weight:700;border-bottom:1px solid var(--line2);padding-bottom:4px;margin:22px 0 8px;color:var(--accent);scroll-margin-top:12px}
+  h3.year{font-size:15px;font-weight:700;border-bottom:1px solid var(--line2);padding-bottom:4px;margin:22px 0 8px;color:var(--accent);scroll-margin-top:70px}
   .award-row{display:grid;grid-template-columns:90px 1fr 1.1fr;gap:10px;padding:6px 4px;border-bottom:1px dotted var(--line2);font-size:13.5px}
   .award-row .date{color:var(--muted)}
   /* rules layout */
   .rules-layout{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:start}
-  .toc{position:sticky;top:12px;border:1px dashed var(--line);border-radius:6px;padding:10px;background:#fff;font-size:14px}
+  .toc{position:sticky;top:70px;border:1px dashed var(--line);border-radius:6px;padding:10px;background:#fff;font-size:14px}
   .toc .toc-title{font-size:12px;color:var(--muted);margin-bottom:6px}
   .toc a{display:block;padding:6px 8px;color:var(--ink);text-decoration:none;border-radius:4px}
   .toc a.active{background:var(--ph);font-weight:700;box-shadow:2px 0 0 #888 inset}
   .toc a.ext::after{content:" ↗";color:var(--muted)}
   .toc .disabled{color:#bbb;padding:6px 8px}
-  .rules-content section{margin-bottom:30px;scroll-margin-top:14px}
+  .rules-content section{margin-bottom:30px;scroll-margin-top:70px}
   .rules-content h3{font-size:16px;margin:0 0 10px;color:var(--accent);border-bottom:1px solid var(--line2);padding-bottom:4px}
   .rules-content h4{font-size:14px;margin:16px 0 4px;color:var(--accent)}
   .rules-content ol,.rules-content ul{margin:0 0 6px;padding-left:22px}
   .rules-content li{font-size:13.5px;margin:3px 0}
-  .rules-content p{font-size:13.5px;margin:6px 0;max-width:46em}
+  .rules-content p{font-size:13.5px;margin:6px 0}
   .sub-num{list-style:lower-roman}
   .ext-btn{display:inline-block;margin:6px 0;border:1px solid var(--line);background:var(--ph2);padding:8px 14px;border-radius:6px;color:var(--accent);text-decoration:none;font-size:14px}
   @media(max-width:680px){
@@ -69,12 +83,15 @@
 </style>
 </head>
 <body>
-<div class="wf-flag">低保真 Wireframe · 視覺以 Figma 為準 · 標題層級以 H1/H2/H3 標示 · 得獎為 2025–2023 範例三年、自律規範為全文</div>
-
 <header class="site-header">
-  <span class="logo">TVBS</span>
-  <span class="nav">即時 · 政治 · 國際 · 生活 · 健康 · 娛樂 · …</span>
-  <span>🔍</span>
+  <div class="hd-inner">
+    <span class="hd-logo">TVBS<b>NEWS</b></span>
+    <span class="hd-spacer"></span>
+    <span class="hd-search">
+      <input type="text" aria-label="搜尋">
+      <span class="icons">☰&#8202;🔍</span>
+    </span>
+  </div>
 </header>
 
 <main class="page">
@@ -142,7 +159,6 @@
     <div class="award-row"><span class="date">2023-07-19</span><span>健康2.0 網路報導《裴洛西82歲像4、50歲…》</span><span class="prize">第三屆銀響力新聞獎 平面及網路(文字)類【優選】</span></div>
     <div class="award-row"><span class="date">2023-06-14</span><span>TVBS 新聞</span><span class="prize">牛津大學路透社新聞學研究中心《2023全球數位新聞報告》連續六年【最受信賴之商業電視新聞品牌】、連續七年【最常使用之廣電新聞媒體第一名】</span></div>
 
-    <p class="hint">本 prototype 僅放 2025–2023 三年範例；2022 至 1997 之年份分組依同一 pattern 續接（年份標題為 H3）。所有年份內容皆在頁上、不收合，年份導覽只是跳轉捷徑（灰色年份此處未填資料）。</p>
   </section>
 
   <!-- Tab 3：自律規範 -->
@@ -419,6 +435,17 @@
   </section>
 </main>
 
+<button class="wf-info-btn" id="wfInfoBtn">ℹ︎ Wireframe 說明</button>
+<aside class="wf-info" id="wfInfo">
+  <h4>關於這份 wireframe</h4>
+  <ul>
+    <li>低保真 wireframe，視覺以 Figma 定稿為準。</li>
+    <li>內容為範例：得獎僅放 2025–2023 三年示意（2022–1997 同 pattern 續接）、自律規範為全文，非最終文案。</li>
+    <li>頁面全貌：sticky header、無快訊、桌機無 sidebar、內容滿版（1152、左右各 16px）。</li>
+  </ul>
+  <label><input type="checkbox" id="lvlToggle"> 標示標題層級（H1 / H2 / H3）</label>
+</aside>
+
 <script>
   // Tab 切換
   const tabs = document.querySelectorAll('.tabs button');
@@ -442,6 +469,14 @@
     });
   }, {rootMargin:'-10% 0px -70% 0px'});
   secs.forEach(s => io.observe(s));
+
+  // wireframe 說明面板 + 標題層級切換
+  const infoBtn = document.getElementById('wfInfoBtn');
+  const info = document.getElementById('wfInfo');
+  infoBtn.addEventListener('click', () => info.classList.toggle('open'));
+  document.getElementById('lvlToggle').addEventListener('change', (e) => {
+    document.body.classList.toggle('show-lvl', e.target.checked);
+  });
 </script>
 </body>
 </html>
